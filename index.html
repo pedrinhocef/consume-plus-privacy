@@ -4,132 +4,804 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consumo+ - Política de Privacidade</title>
+
     <style>
+        :root {
+            --bg: #f7f9f8;
+            --surface: #ffffff;
+            --text: #1f2421;
+            --text-secondary: #5f6963;
+            --border: #dce3df;
+            --accent: #006c4c;
+            --accent-soft: #e6f4ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        .container {
+            width: min(920px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 32px 20px;
-            line-height: 1.6;
-            color: #1f2937;
-            background: #ffffff;
+            padding: 40px 0 64px;
         }
 
-        h1, h2 {
-            color: #146b4a;
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
         }
 
-        a {
-            color: #146b4a;
+        .app-name {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 28px 0;
+        }
+
+        .language-button {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .language-button:hover {
+            border-color: var(--accent);
+        }
+
+        .language-button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .policy {
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .policy.active {
+            display: block;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 1.9rem;
+        }
+
+        h2 {
+            margin-top: 32px;
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin: 12px 0;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
         }
 
         .updated {
-            color: #6b7280;
-            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 20px, 920px);
+                padding-top: 24px;
+            }
+
+            .policy {
+                padding: 22px;
+                border-radius: 14px;
+            }
+
+            .app-name {
+                font-size: 1.8rem;
+            }
+
+            h1 {
+                font-size: 1.55rem;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111412;
+                --surface: #191d1a;
+                --text: #e2e3df;
+                --text-secondary: #bfc9c1;
+                --border: #353d38;
+                --accent: #69dbac;
+                --accent-soft: #1d352b;
+            }
+
+            .language-button.active {
+                color: #003825;
+            }
         }
     </style>
 </head>
+
 <body>
-    <h1>Política de Privacidade — Consumo+</h1>
 
-    <p class="updated">Última atualização: 26 de setembro de 2026</p>
+<div class="container">
 
-    <p>
-        O Consumo+ foi desenvolvido para ajudar o usuário a acompanhar e estimar
-        seus consumos de serviços como energia elétrica e água.
-    </p>
+    <div class="header">
+        <h1 class="app-name">Consumo+</h1>
+        <div class="subtitle">Privacy & Data</div>
+    </div>
 
-    <h2>1. Dados armazenados no dispositivo</h2>
+    <div class="language-selector">
+        <button class="language-button active" onclick="showLanguage('pt', this)">
+            Português
+        </button>
 
-    <p>
-        As medições, preferências e configurações inseridas pelo usuário são
-        armazenadas localmente no dispositivo.
-    </p>
+        <button class="language-button" onclick="showLanguage('en', this)">
+            English
+        </button>
 
-    <p>
-        O Consumo+ não possui conta de usuário própria e não envia essas
-        informações para servidores próprios do aplicativo.
-    </p>
+        <button class="language-button" onclick="showLanguage('es', this)">
+            Español
+        </button>
+    </div>
 
-    <h2>2. Anúncios</h2>
+    <!-- PORTUGUÊS -->
 
-    <p>
-        A versão gratuita do Consumo+ pode exibir anúncios fornecidos pelo
-        Google AdMob.
-    </p>
+    <section id="pt" class="policy active">
 
-    <p>
-        O Google pode coletar e processar informações conforme suas próprias
-        políticas, incluindo informações relacionadas ao dispositivo,
-        identificadores e interação com anúncios.
-    </p>
+        <h1>Política de Privacidade — Consumo+</h1>
 
-    <p>
-        Usuários que adquirem a opção Premium têm os anúncios removidos do
-        aplicativo.
-    </p>
+        <p class="updated">
+            Última atualização: 27 de setembro de 2026
+        </p>
 
-    <h2>3. Compras</h2>
+        <p>
+            O Consumo+ foi desenvolvido para ajudar o usuário a acompanhar e estimar
+            o consumo de serviços como energia elétrica e água.
+        </p>
 
-    <p>
-        A compra da opção Premium é processada pelo Google Play.
-        O Consumo+ não recebe nem armazena dados de cartão de crédito ou outras
-        informações financeiras do usuário.
-    </p>
+        <p>
+            Esta Política de Privacidade explica como as informações podem ser
+            armazenadas e processadas durante o uso do aplicativo.
+        </p>
 
-    <h2>4. Notificações</h2>
+        <h2>1. Dados armazenados no dispositivo</h2>
 
-    <p>
-        O aplicativo pode utilizar notificações locais para lembretes
-        configurados pelo próprio usuário.
-    </p>
+        <p>
+            As medições, metas, preferências e configurações inseridas pelo usuário
+            são armazenadas localmente no próprio dispositivo.
+        </p>
 
-    <p>
-        O usuário pode desativar essas notificações a qualquer momento nas
-        configurações do aplicativo ou do dispositivo.
-    </p>
+        <p>
+            O Consumo+ não possui sistema próprio de contas de usuário e não envia
+            essas informações para servidores próprios do aplicativo.
+        </p>
 
-    <h2>5. Permissões</h2>
+        <p>
+            Os dados principais de consumo podem ser utilizados sem a necessidade
+            de criação de conta.
+        </p>
 
-    <p>
-        O Consumo+ solicita apenas permissões necessárias para funcionalidades
-        específicas do aplicativo, como notificações quando aplicável.
-    </p>
+        <h2>2. Anúncios</h2>
 
-    <h2>6. Compartilhamento de dados</h2>
+        <p>
+            A versão gratuita do Consumo+ pode exibir anúncios fornecidos pelo
+            Google AdMob.
+        </p>
 
-    <p>
-        O desenvolvedor do Consumo+ não vende dados pessoais dos usuários.
-    </p>
+        <p>
+            Os serviços de publicidade do Google podem coletar e processar
+            determinadas informações de acordo com suas próprias políticas,
+            incluindo, por exemplo:
+        </p>
 
-    <p>
-        Serviços de terceiros integrados ao aplicativo, como Google AdMob e
-        Google Play Billing, podem processar dados conforme suas respectivas
-        políticas de privacidade e termos de serviço.
-    </p>
+        <ul>
+            <li>identificadores do dispositivo;</li>
+            <li>identificadores de publicidade;</li>
+            <li>informações aproximadas de localização;</li>
+            <li>informações de diagnóstico;</li>
+            <li>interações com o aplicativo e com anúncios.</li>
+        </ul>
 
-    <h2>7. Crianças</h2>
+        <p>
+            Quando exigido pela legislação aplicável, o aplicativo utiliza
+            mecanismos de consentimento fornecidos pelo Google para permitir que
+            o usuário gerencie suas escolhas de privacidade relacionadas à publicidade.
+        </p>
 
-    <p>
-        O Consumo+ não é direcionado especificamente a crianças e não coleta
-        intencionalmente informações pessoais de menores por meio de servidores
-        próprios.
-    </p>
+        <p>
+            Usuários que adquirem a opção Premium têm os anúncios removidos do aplicativo.
+        </p>
 
-    <h2>8. Alterações nesta política</h2>
+        <h2>3. Compras</h2>
 
-    <p>
-        Esta Política de Privacidade pode ser atualizada futuramente para
-        refletir mudanças no aplicativo, legislação ou serviços utilizados.
-    </p>
+        <p>
+            A compra da opção Premium é processada pelo Google Play.
+        </p>
 
-    <h2>9. Contato</h2>
+        <p>
+            O Consumo+ não recebe nem armazena diretamente dados de cartão de crédito,
+            débito ou outras informações financeiras utilizadas na transação.
+        </p>
 
-    <p>
-        Para dúvidas relacionadas à privacidade ou ao aplicativo:
-        <a href="mailto:consumoplus.app@gmail.com">
-            consumoplus.app@gmail.com
-        </a>
-    </p>
+        <p>
+            O processamento da compra é realizado de acordo com as políticas e termos
+            do Google Play.
+        </p>
+
+        <h2>4. Notificações</h2>
+
+        <p>
+            O aplicativo pode utilizar notificações locais para enviar lembretes
+            configurados pelo próprio usuário.
+        </p>
+
+        <p>
+            O usuário pode alterar ou desativar essas notificações a qualquer momento
+            nas configurações do aplicativo ou do dispositivo.
+        </p>
+
+        <h2>5. Permissões</h2>
+
+        <p>
+            O Consumo+ solicita apenas permissões necessárias para funcionalidades
+            específicas do aplicativo, como a permissão de notificações quando aplicável.
+        </p>
+
+        <p>
+            As permissões podem variar de acordo com a versão do Android e com os
+            recursos utilizados pelo usuário.
+        </p>
+
+        <h2>6. Compartilhamento e processamento por terceiros</h2>
+
+        <p>
+            O desenvolvedor do Consumo+ não vende dados pessoais dos usuários.
+        </p>
+
+        <p>
+            Serviços de terceiros integrados ao aplicativo podem coletar ou processar
+            informações de acordo com suas próprias políticas e termos, incluindo:
+        </p>
+
+        <ul>
+            <li>Google AdMob, para publicidade;</li>
+            <li>Google Play Billing, para processamento da compra Premium.</li>
+        </ul>
+
+        <p>
+            O Consumo+ não utiliza servidores próprios para armazenar as medições
+            de consumo inseridas pelo usuário.
+        </p>
+
+        <h2>7. Exclusão de dados</h2>
+
+        <p>
+            Como os dados principais do Consumo+ são armazenados localmente no dispositivo,
+            o usuário pode removê-los por meio das funcionalidades disponíveis no aplicativo
+            ou ao limpar os dados/desinstalar o aplicativo do dispositivo.
+        </p>
+
+        <p>
+            Informações eventualmente processadas por serviços de terceiros estão sujeitas
+            às políticas e mecanismos disponibilizados por esses respectivos serviços.
+        </p>
+
+        <h2>8. Crianças e adolescentes</h2>
+
+        <p>
+            O Consumo+ não é direcionado especificamente a crianças.
+        </p>
+
+        <p>
+            O aplicativo não coleta intencionalmente, por meio de servidores próprios,
+            informações pessoais de menores.
+        </p>
+
+        <h2>9. Segurança</h2>
+
+        <p>
+            O Consumo+ busca limitar a coleta de dados ao necessário para o funcionamento
+            das funcionalidades oferecidas.
+        </p>
+
+        <p>
+            Os dados de consumo inseridos pelo usuário permanecem armazenados localmente
+            no dispositivo, salvo informações que possam ser processadas por serviços de
+            terceiros conforme descrito nesta política.
+        </p>
+
+        <h2>10. Alterações nesta política</h2>
+
+        <p>
+            Esta Política de Privacidade poderá ser atualizada futuramente para refletir
+            alterações no aplicativo, nos serviços de terceiros utilizados, em requisitos
+            legais ou em práticas de privacidade.
+        </p>
+
+        <p>
+            A data da última atualização será indicada no início desta página.
+        </p>
+
+        <h2>11. Contato</h2>
+
+        <p>
+            Para dúvidas relacionadas à privacidade ou ao aplicativo:
+        </p>
+
+        <p>
+            <a href="mailto:consumoplus.app@gmail.com">
+                consumoplus.app@gmail.com
+            </a>
+        </p>
+
+    </section>
+
+    <!-- ENGLISH -->
+
+    <section id="en" class="policy">
+
+        <h1>Privacy Policy — Consumo+</h1>
+
+        <p class="updated">
+            Last updated: September 27, 2026
+        </p>
+
+        <p>
+            Consumo+ was developed to help users track and estimate the consumption
+            of services such as electricity and water.
+        </p>
+
+        <p>
+            This Privacy Policy explains how information may be stored and processed
+            while using the application.
+        </p>
+
+        <h2>1. Data stored on the device</h2>
+
+        <p>
+            Measurements, goals, preferences, and settings entered by the user are
+            stored locally on the user's device.
+        </p>
+
+        <p>
+            Consumo+ does not operate its own user account system and does not send
+            this information to servers owned by the application.
+        </p>
+
+        <p>
+            The main consumption features can be used without creating an account.
+        </p>
+
+        <h2>2. Advertising</h2>
+
+        <p>
+            The free version of Consumo+ may display advertisements provided by
+            Google AdMob.
+        </p>
+
+        <p>
+            Google advertising services may collect and process certain information
+            in accordance with their own policies, including, for example:
+        </p>
+
+        <ul>
+            <li>device identifiers;</li>
+            <li>advertising identifiers;</li>
+            <li>approximate location information;</li>
+            <li>diagnostic information;</li>
+            <li>interactions with the application and advertisements.</li>
+        </ul>
+
+        <p>
+            Where required by applicable law, the application uses consent mechanisms
+            provided by Google to allow users to manage their privacy choices related
+            to advertising.
+        </p>
+
+        <p>
+            Users who purchase the Premium option will have advertisements removed
+            from the application.
+        </p>
+
+        <h2>3. Purchases</h2>
+
+        <p>
+            The Premium purchase is processed by Google Play.
+        </p>
+
+        <p>
+            Consumo+ does not directly receive or store credit card, debit card, or
+            other financial information used in the transaction.
+        </p>
+
+        <p>
+            Purchase processing is carried out in accordance with Google Play policies
+            and terms.
+        </p>
+
+        <h2>4. Notifications</h2>
+
+        <p>
+            The application may use local notifications to send reminders configured
+            by the user.
+        </p>
+
+        <p>
+            Users may change or disable these notifications at any time through the
+            application settings or device settings.
+        </p>
+
+        <h2>5. Permissions</h2>
+
+        <p>
+            Consumo+ requests only the permissions required for specific application
+            features, such as notification permission when applicable.
+        </p>
+
+        <p>
+            Permissions may vary depending on the Android version and the features
+            used by the user.
+        </p>
+
+        <h2>6. Sharing and processing by third parties</h2>
+
+        <p>
+            The developer of Consumo+ does not sell users' personal data.
+        </p>
+
+        <p>
+            Third-party services integrated into the application may collect or
+            process information in accordance with their own policies and terms,
+            including:
+        </p>
+
+        <ul>
+            <li>Google AdMob, for advertising;</li>
+            <li>Google Play Billing, for processing Premium purchases.</li>
+        </ul>
+
+        <p>
+            Consumo+ does not use its own servers to store the consumption measurements
+            entered by users.
+        </p>
+
+        <h2>7. Data deletion</h2>
+
+        <p>
+            Since the main Consumo+ data is stored locally on the device, users may
+            remove it using the features available in the application or by clearing
+            the application's data or uninstalling the application.
+        </p>
+
+        <p>
+            Information processed by third-party services is subject to the privacy
+            policies and mechanisms provided by those respective services.
+        </p>
+
+        <h2>8. Children and minors</h2>
+
+        <p>
+            Consumo+ is not specifically directed at children.
+        </p>
+
+        <p>
+            The application does not intentionally collect personal information from
+            minors through servers owned by the application.
+        </p>
+
+        <h2>9. Security</h2>
+
+        <p>
+            Consumo+ seeks to limit data collection to what is necessary for the
+            operation of the features offered.
+        </p>
+
+        <p>
+            Consumption data entered by the user remains stored locally on the device,
+            except for information that may be processed by third-party services as
+            described in this policy.
+        </p>
+
+        <h2>10. Changes to this policy</h2>
+
+        <p>
+            This Privacy Policy may be updated in the future to reflect changes to
+            the application, third-party services used, legal requirements, or privacy
+            practices.
+        </p>
+
+        <p>
+            The date of the latest update will be shown at the beginning of this page.
+        </p>
+
+        <h2>11. Contact</h2>
+
+        <p>
+            For questions related to privacy or the application:
+        </p>
+
+        <p>
+            <a href="mailto:consumoplus.app@gmail.com">
+                consumoplus.app@gmail.com
+            </a>
+        </p>
+
+    </section>
+
+    <!-- ESPAÑOL -->
+
+    <section id="es" class="policy">
+
+        <h1>Política de Privacidad — Consumo+</h1>
+
+        <p class="updated">
+            Última actualización: 27 de septiembre de 2026
+        </p>
+
+        <p>
+            Consumo+ fue desarrollado para ayudar al usuario a controlar y estimar
+            el consumo de servicios como energía eléctrica y agua.
+        </p>
+
+        <p>
+            Esta Política de Privacidad explica cómo la información puede almacenarse
+            y procesarse durante el uso de la aplicación.
+        </p>
+
+        <h2>1. Datos almacenados en el dispositivo</h2>
+
+        <p>
+            Las mediciones, metas, preferencias y configuraciones ingresadas por el
+            usuario se almacenan localmente en el propio dispositivo.
+        </p>
+
+        <p>
+            Consumo+ no dispone de un sistema propio de cuentas de usuario y no envía
+            esta información a servidores propios de la aplicación.
+        </p>
+
+        <p>
+            Las principales funciones de consumo pueden utilizarse sin necesidad de
+            crear una cuenta.
+        </p>
+
+        <h2>2. Publicidad</h2>
+
+        <p>
+            La versión gratuita de Consumo+ puede mostrar anuncios proporcionados
+            por Google AdMob.
+        </p>
+
+        <p>
+            Los servicios publicitarios de Google pueden recopilar y procesar determinada
+            información de acuerdo con sus propias políticas, incluyendo, por ejemplo:
+        </p>
+
+        <ul>
+            <li>identificadores del dispositivo;</li>
+            <li>identificadores publicitarios;</li>
+            <li>información aproximada de ubicación;</li>
+            <li>información de diagnóstico;</li>
+            <li>interacciones con la aplicación y con los anuncios.</li>
+        </ul>
+
+        <p>
+            Cuando la legislación aplicable lo exige, la aplicación utiliza mecanismos
+            de consentimiento proporcionados por Google para permitir que el usuario
+            gestione sus opciones de privacidad relacionadas con la publicidad.
+        </p>
+
+        <p>
+            Los usuarios que adquieren la opción Premium tendrán los anuncios eliminados
+            de la aplicación.
+        </p>
+
+        <h2>3. Compras</h2>
+
+        <p>
+            La compra de la opción Premium es procesada por Google Play.
+        </p>
+
+        <p>
+            Consumo+ no recibe ni almacena directamente datos de tarjetas de crédito,
+            débito u otra información financiera utilizada en la transacción.
+        </p>
+
+        <p>
+            El procesamiento de la compra se realiza de acuerdo con las políticas
+            y los términos de Google Play.
+        </p>
+
+        <h2>4. Notificaciones</h2>
+
+        <p>
+            La aplicación puede utilizar notificaciones locales para enviar recordatorios
+            configurados por el propio usuario.
+        </p>
+
+        <p>
+            El usuario puede modificar o desactivar estas notificaciones en cualquier
+            momento desde la configuración de la aplicación o del dispositivo.
+        </p>
+
+        <h2>5. Permisos</h2>
+
+        <p>
+            Consumo+ solicita únicamente los permisos necesarios para funciones
+            específicas de la aplicación, como el permiso de notificaciones cuando
+            corresponda.
+        </p>
+
+        <p>
+            Los permisos pueden variar según la versión de Android y las funciones
+            utilizadas por el usuario.
+        </p>
+
+        <h2>6. Compartición y procesamiento por terceros</h2>
+
+        <p>
+            El desarrollador de Consumo+ no vende datos personales de los usuarios.
+        </p>
+
+        <p>
+            Los servicios de terceros integrados en la aplicación pueden recopilar
+            o procesar información de acuerdo con sus propias políticas y términos,
+            incluyendo:
+        </p>
+
+        <ul>
+            <li>Google AdMob, para publicidad;</li>
+            <li>Google Play Billing, para procesar compras Premium.</li>
+        </ul>
+
+        <p>
+            Consumo+ no utiliza servidores propios para almacenar las mediciones de
+            consumo ingresadas por el usuario.
+        </p>
+
+        <h2>7. Eliminación de datos</h2>
+
+        <p>
+            Dado que los datos principales de Consumo+ se almacenan localmente en el
+            dispositivo, el usuario puede eliminarlos mediante las funciones disponibles
+            en la aplicación o borrando los datos de la aplicación o desinstalándola.
+        </p>
+
+        <p>
+            La información procesada por servicios de terceros está sujeta a las
+            políticas de privacidad y mecanismos ofrecidos por dichos servicios.
+        </p>
+
+        <h2>8. Niños y menores de edad</h2>
+
+        <p>
+            Consumo+ no está dirigido específicamente a niños.
+        </p>
+
+        <p>
+            La aplicación no recopila intencionalmente información personal de menores
+            a través de servidores propios.
+        </p>
+
+        <h2>9. Seguridad</h2>
+
+        <p>
+            Consumo+ busca limitar la recopilación de datos a lo necesario para el
+            funcionamiento de las funciones ofrecidas.
+        </p>
+
+        <p>
+            Los datos de consumo ingresados por el usuario permanecen almacenados
+            localmente en el dispositivo, salvo la información que pueda ser procesada
+            por servicios de terceros conforme a lo descrito en esta política.
+        </p>
+
+        <h2>10. Cambios en esta política</h2>
+
+        <p>
+            Esta Política de Privacidad podrá actualizarse en el futuro para reflejar
+            cambios en la aplicación, los servicios de terceros utilizados, requisitos
+            legales o prácticas de privacidad.
+        </p>
+
+        <p>
+            La fecha de la última actualización se indicará al comienzo de esta página.
+        </p>
+
+        <h2>11. Contacto</h2>
+
+        <p>
+            Para consultas relacionadas con la privacidad o con la aplicación:
+        </p>
+
+        <p>
+            <a href="mailto:consumoplus.app@gmail.com">
+                consumoplus.app@gmail.com
+            </a>
+        </p>
+
+    </section>
+
+    <div class="footer">
+        Consumo+ © 2026
+    </div>
+
+</div>
+
+<script>
+    function showLanguage(language, button) {
+        document.querySelectorAll('.policy').forEach(function(section) {
+            section.classList.remove('active');
+        });
+
+        document.querySelectorAll('.language-button').forEach(function(item) {
+            item.classList.remove('active');
+        });
+
+        document.getElementById(language).classList.add('active');
+        button.classList.add('active');
+
+        document.documentElement.lang =
+            language === 'pt'
+                ? 'pt-BR'
+                : language === 'en'
+                    ? 'en'
+                    : 'es';
+    }
+</script>
+
 </body>
 </html>
